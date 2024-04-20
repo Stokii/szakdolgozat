@@ -29,8 +29,26 @@ export class authService {
         throw error;
     };
     }
-    login() {
-        return {msg: 'I am already logged in'};
+    async login(dto: AuthDto) {
+        // Megkeresni a felhasználót email alapján
+        const user = await this.prisma.user.findUnique({
+            where: {
+                email: dto.email,
+            },
+        });
+
+        // Ha nincs ilyen user, kivételt dobunk
+        if (!user) throw new ForbiddenException('Felhasználó nem található!')
+
+        // compare password
+        const pwMatches = await argon.verify(user.hash, dto.password);
+
+        // Ha a jelsző nem egyezik, kivételt dobunk
+        if (!pwMatches) throw new ForbiddenException('Helytelen jelszó!')
+
+        // visszaadjuk a user-t
+        delete user.hash;
+        return user;
     }
 
     getHello(): string {
