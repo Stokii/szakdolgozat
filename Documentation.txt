@@ -66,4 +66,5 @@ docker ps | megnézni, hogy fut e adatbázis
 docker compose up dev-db -d | Adatbázis létrehozása
 npx prisma migrate dev | bármi változást eszközölünk a schema.prisma fájlon, ezt lefuttatjuk
 DTO (data transfer object) készítés
-1:10:16
+1:17:16
+JWT (Json Web Token)
