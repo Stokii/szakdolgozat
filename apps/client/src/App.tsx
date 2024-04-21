@@ -7,7 +7,7 @@ function App() {
   const [greeting, setGreeting] = useState('');
 
   useEffect(() => {
-    fetch('api/auth')
+    fetch('api/users/me')
       .then((res) => res.text()).then(setGreeting);
   }, []);
 
