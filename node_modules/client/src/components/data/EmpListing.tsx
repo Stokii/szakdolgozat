@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function EmpListing() {
     type User = {
@@ -11,6 +11,7 @@ export default function EmpListing() {
       };
 
     const [users, setUsers] = useState<User[]>([]);
+    const navigate = useNavigate();
     
     useEffect(() => {
         fetch('api/users/test').then(res => {
@@ -20,6 +21,18 @@ export default function EmpListing() {
             setUsers(res);
         }).catch(err => console.error(err.message));
     },[])
+
+    const LoadDetails = (id: string | number) => {
+        navigate('/employee/details/'+ id);
+    }
+
+    const RemoveFunction = (id: string | number) => {
+
+    }
+
+    const LoadEdit = (id: string | number) => {
+
+    }
     
     return (
         <div className="container">
@@ -52,9 +65,9 @@ export default function EmpListing() {
                                         <td>{items.firstName}</td>
                                         <td>{items.lastName}</td>
                                         <td>
-                                            <button>edit</button>
-                                            <button>remove</button>
-                                            <button>details</button>
+                                            <button onClick={() => {LoadEdit(items.id)}}>edit</button>
+                                            <button onClick={() => {RemoveFunction(items.id)}}>remove</button>
+                                            <button onClick={() => {LoadDetails(items.id)}}>details</button>
                                         </td>
                                     </tr>
                                     )

@@ -13,7 +13,7 @@ function App() {
         <Routes>
             <Route path='/' element={<EmpListing />}></Route>
             <Route path='/employee/create' element={<EmpCreate />}></Route>
-            <Route path='/employee/detail/:empid' element={<EmpDetails />}></Route>
+            <Route path='/employee/details/:empid' element={<EmpDetails />}></Route>
             <Route path='/employee/edit/:empid' element={<EmpEdit />}></Route>
         </Routes>
       </BrowserRouter>
