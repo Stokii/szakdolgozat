@@ -28,9 +28,7 @@ export default function EmpCreate() {
         } catch (error) {
           console.error('Error saving user:', error);
         }
-      };
-      
-
+      };     
     return (
         <div>
             <div>

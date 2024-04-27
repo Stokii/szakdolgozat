@@ -22,7 +22,7 @@ export default function EmpListing() {
         }).catch(err => console.error(err.message));
     },[])
 
-    const LoadDetails = (id: string | number) => {
+    const LoadDetails = (id: number) => {
         navigate('/employee/details/'+ id);
     }
 

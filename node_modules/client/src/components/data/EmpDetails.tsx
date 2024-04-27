@@ -1,5 +1,7 @@
-export default function EmpDetails() {
+export default function EmpDetails() {  
     return (
-        <div>Test</div>
+      <div>
+        <h2>User Details</h2>
+      </div>
     );
 }
