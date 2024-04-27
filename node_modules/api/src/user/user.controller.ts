@@ -1,4 +1,4 @@
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { Request } from 'express';
 import { JwtGuard } from 'src/auth/guard';
 import { UserService } from './user.service';
@@ -16,4 +16,9 @@ export class UserController {
     findRows() {
         return this.userService.findAll();
     }
+
+    @Post()
+    async createUser(@Body() userData: { email: string; firstname: string; lastname: string }) {
+    return this.userService.createUser(userData);
+  }
 }
