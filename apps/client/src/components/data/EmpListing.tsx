@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function EmpListing() {
     type User = {
@@ -24,7 +25,10 @@ export default function EmpListing() {
         <div className="container">
             <div className="card">
                 <div className="card-title">
-                    <h2>Users listing</h2>
+                    <h2>Users list</h2>
+                </div>
+                <div>
+                    <Link to="employee/create">Add new (+)</Link>
                 </div>
                 <div className="card-body">
                     <table className="table table-bordered">
@@ -38,7 +42,7 @@ export default function EmpListing() {
                             </tr>
                         </thead>
                         <tbody>
-                            {
+                            {users &&
                                 users.map(items => {
                                     return (
                                     <tr key={items.id}>
@@ -47,6 +51,11 @@ export default function EmpListing() {
                                         <td>{items.email}</td>
                                         <td>{items.firstName}</td>
                                         <td>{items.lastName}</td>
+                                        <td>
+                                            <button>edit</button>
+                                            <button>remove</button>
+                                            <button>details</button>
+                                        </td>
                                     </tr>
                                     )
                                 })
